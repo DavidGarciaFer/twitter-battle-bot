@@ -4,8 +4,9 @@ This project consists of a bot developed in Python, which allows the user to rec
 
 Each time the main script is executed a tweet like the following will be published. An image with the updated list of players will be automatically generated. Eliminated players appear in a red font style:
 
-<img src="readme/tweet_example.png" alt="Ouput example" width="300" style="display:block;margin-left:auto;margin-right:auto"/>
-
+<p align="center">
+    <img alt="Tweet example" src="readme/tweet_example.png" width="350px">
+</p>
 ## Getting Started
 
 Before starting to customize the battle it is necessary to follow the next steps to get the copy of the bot up and running.
