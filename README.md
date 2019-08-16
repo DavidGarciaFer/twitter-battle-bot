@@ -77,12 +77,15 @@ python3 generate_dataset.py data/harry_potter.txt
 A file will appear in the ```data``` directory called ```war_data.csv```. This file will contain different information, as the name, message, date of death and number of kills for each player, with the following format:
 
 ```
-name,message,death_day,number_of_kills
+name,message,day,kills
+name1,msg1,d1,k1
+...
 ```
 
 For example:
 
 ```
+name,message,day,kills
 Harry Potter,has called Hedwig to attack,0,2
 Ron Weasley,has killed (unintentionally),3,0
 Hermione Granger,has managed to get rid of,1,1
