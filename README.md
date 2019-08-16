@@ -7,6 +7,7 @@ Each time the main script is executed a tweet like the following will be publish
 <p align="center">
     <img alt="Tweet example" src="readme/tweet_example.png" width="350px">
 </p>
+
 ## Getting Started
 
 Before starting to customize the battle it is necessary to follow the next steps to get the copy of the bot up and running.
@@ -57,21 +58,67 @@ Ron Weasley,has killed (unintentionally)
 Hermione Granger,has managed to get rid of
 ```
 
-An [example file](data/harry_potter.txt) is provided for testing purposes, with Harry Potter characters.
+An [example file](data/harry_potter.txt) is provided for testing purposes, with *Harry Potter* characters.
 
 ## Generating war data
 
-TODO
+Once you have set the name and messages for the player you can generate the data file which the bot will use to generate tweets. It can be donde by executing the script called [generate_dataset.py](generate_dataset.py).
+
+```
+python3 generate_dataset.py <file_name>
+```
+
+For example, to use the *Harry Potter* example file we type:
+
+```
+python3 generate_dataset.py data/harry_potter.txt
+```
+
+A file will appear in the ```data``` directory called ```war_data.csv```. This file will contain different information, as the name, message, date of death and number of kills for each player, with the following format:
+
+```
+name,message,death_day,number_of_kills
+```
+
+For example:
+
+```
+Harry Potter,has called Hedwig to attack,0,2
+Ron Weasley,has killed (unintentionally),3,0
+Hermione Granger,has managed to get rid of,1,1
+```
+
+### Restore old data
+
+You can easily restart the game at any desired point. The file ```war_data.csv``` is the one that the bot will take into account to generate the next elimination, so you can replace it at any time. Also, a backup file is generated after each tweet is published, so after the n-th tweet a file called ```war_data_<n-1>.csv``` will be generated (in the data directory) storing previous values, so if you want to rewind the game one turn just rename the last of this files to ```war_data.csv```.
 
 ## Running tests
 
-TODO
+Once ```war_data.csv``` is generated you can run the test included in war.py by executing:
+```
+python3 war.py
+```
+Tweet's message should appear on screen. Check if the image has been correctly generated in the file ```output.jpg```, you can change the number of rows per column [by changing this variable on the tests](https://github.com/DavidGarciaFer/twitter-battle-bot/blob/master/war.py#L155) and, once you have find a fine value change the definitive value [here](https://github.com/DavidGarciaFer/twitter-battle-bot/blob/master/bot.py#L9). 
+
+You can try this command as many times as you wish, but nothing will appear on Twitter until you double check next step.
 
 ## Setting up Twitter API
 
+First of all you will need a [Twitter developer account](https://developer.twitter.com/en/apply-for-access). Just fill the application (check Hobbyist -> Making a bot). Once your developer account is ready just create an App, and fill [this lines](https://github.com/DavidGarciaFer/twitter-battle-bot/blob/master/bot.py#L19) with your keys.
+
+Now everything is ready! Run the next command to see your first tweet published!
+
+```
+python3 bot.py
+```
+
 ## How to automate the execution
 
-TODO
+There are different forms to automate the execution in a determined time period. I use ```crontab```. Check [this tutorial](https://www.howtogeek.com/101288/how-to-schedule-tasks-on-linux-an-introduction-to-crontab-files/) to see how it works. For example, if I want to publish a tweet at the start of every hour type in your ```crontab``` file:
+
+```
+0 * * * * python3 <path to the repository>/twitter-battle-bot/bot.py
+```
 
 ## Authors
 
