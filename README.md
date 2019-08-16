@@ -130,4 +130,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-* TODO
+* This bot is inspired in the twitter account [@spanishwarbot](https://twitter.com/spanishwarbot).
